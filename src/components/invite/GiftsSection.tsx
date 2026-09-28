@@ -69,14 +69,16 @@ export function GiftsSection({ event }: { event?: EventRow | null }) {
                   {gift.description}
                 </p>
               )}
-              <div className="mt-5 flex items-baseline justify-between border-t border-border pt-4">
-                <span className="text-sm">{formatBRL(Number(gift.price))}</span>
-                {isQuota && (
-                  <span className="text-[0.65rem] tracking-[0.15em] text-muted-foreground uppercase">
-                    {gift.total_quotas} cotas de {formatBRL(Number(gift.quota_value))}
-                  </span>
-                )}
-              </div>
+              {(isQuota || Number(gift.price) > 0) && (
+  <div className="mt-5 flex items-baseline justify-between border-t border-border pt-4">
+    <span className="text-sm">{formatBRL(Number(gift.price))}</span>
+    {isQuota && (
+      <span className="text-[0.65rem] tracking-[0.15em] text-muted-foreground uppercase">
+        {gift.total_quotas} cotas de {formatBRL(Number(gift.quota_value))}
+      </span>
+    )}
+  </div>
+)}
               {isQuota && (
                 <div className="mt-4">
                   <div className="h-px w-full bg-border">
@@ -100,7 +102,7 @@ export function GiftsSection({ event }: { event?: EventRow | null }) {
                   ? "Já reservado"
                   : isQuota
                     ? `Contribuir com ${formatBRL(Number(gift.quota_value))}`
-                    : "Quero dar este presente"}
+                    : "Vou presentear com isso"}
               </button>
             </article>
           );

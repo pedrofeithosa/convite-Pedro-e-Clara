@@ -69,7 +69,7 @@ export function GiftDialog({ gift, hostWhatsapp, onClose, onReserved }: Props) {
 
   const message = isQuota
     ? `Olá, Pedro! Sou ${form.name} e reservei uma cota de ${formatBRL(amount)} do presente "${gift.name}" no Chá de Casa Nova.`
-    : `Olá, Pedro! Sou ${form.name} e reservei o presente "${gift.name}" (${formatBRL(amount)}) no Chá de Casa Nova.`;
+    : `Olá, Pedro! Sou ${form.name} e vou presentear vocês com "${gift.name}" no Chá de Casa Nova.`;
 
   return (
     <Dialog open={!!gift} onOpenChange={(open) => !open && onClose()}>
@@ -101,9 +101,11 @@ export function GiftDialog({ gift, hostWhatsapp, onClose, onReserved }: Props) {
             <DialogHeader>
               <DialogTitle className="font-serif text-2xl font-light">{gift.name}</DialogTitle>
             </DialogHeader>
-            <p className="text-sm text-muted-foreground">
-              {isQuota ? `Contribuição de ${formatBRL(amount)}` : formatBRL(amount)}
-            </p>
+            {(isQuota || amount > 0) && (
+  <p className="text-sm text-muted-foreground">
+    {isQuota ? `Contribuição de ${formatBRL(amount)}` : formatBRL(amount)}
+  </p>
+)}
             <form onSubmit={submit} className="space-y-4 pt-2">
               <div className="space-y-2">
                 <Label htmlFor="gift-name">Nome</Label>
