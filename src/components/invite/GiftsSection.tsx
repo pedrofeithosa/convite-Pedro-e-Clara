@@ -23,6 +23,14 @@ export function GiftsSection({ event }: { event?: EventRow | null }) {
     });
   }, [gifts, category, term]);
 
+  const categories = useMemo(
+  () => [
+    "Todos",
+    ...CATEGORIES.filter((c) => c !== "Todos" && gifts.some((g) => g.category === c)),
+  ],
+  [gifts],
+);
+
   return (
     <div>
       <div className="flex flex-col gap-4">
@@ -33,7 +41,7 @@ export function GiftsSection({ event }: { event?: EventRow | null }) {
           className="rounded-none border-0 border-b border-border bg-transparent px-0 shadow-none focus-visible:ring-0"
         />
         <div className="-mx-6 flex gap-6 overflow-x-auto px-6 pb-1 md:mx-0 md:flex-wrap md:px-0">
-          {CATEGORIES.map((item) => (
+          {categories.map((item) => (
             <button
               key={item}
               type="button"
