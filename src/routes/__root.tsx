@@ -82,6 +82,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Chá de Casa Nova · Pedro & Clara" },
       { property: "og:description", content: "Uma nova casa, uma nova história. 17.10.2026" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://convite-pedro-e-clara.vercel.app/og-image.jpg" },
+      { property: "og:url", content: "https://convite-pedro-e-clara.vercel.app/" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
     ],
