@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import heroImage from "@/assets/hero.jpg";
-import homeImage from "@/assets/couple.jpg";
+import heroImage from "@/assets/hero-couple.jpg";
+import homeImage from "@/assets/story-couple.jpg";
 import { Nav } from "@/components/invite/Nav";
 import { Countdown } from "@/components/invite/Countdown";
 import { RsvpForm } from "@/components/invite/RsvpForm";
@@ -55,16 +55,22 @@ function Invite() {
     <main className="pb-14 md:pt-14 md:pb-0">
       <Nav />
 
-      <section id="inicio" className="relative flex min-h-[100svh] items-end overflow-x-hidden">
+      <section id="inicio" className="relative flex min-h-[100svh] items-center overflow-hidden">
         <img
           src={heroImage}
-          alt="Sala iluminada da casa nova"
-          width={1280}
-          height={1920}
-          className="absolute inset-0 h-full w-full object-cover"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full scale-110 object-cover object-top blur-2xl brightness-75"
+        />
+        <img
+          src={heroImage}
+          alt="Pedro e Clara"
+          width={1086}
+          height={1448}
+          className="absolute inset-0 mx-auto h-full w-full object-contain"
         />
         <div className="absolute inset-0" style={{ background: "var(--gradient-veil)" }} />
-        <div className="relative w-full px-6 pb-24 text-center md:pb-32">
+        <div className="relative w-full px-6 pb-14 text-center md:pb-20">
           <p
             className="eyebrow reveal text-[color:var(--ivory)]/80"
             style={{ animationDelay: "0.1s" }}
@@ -72,7 +78,7 @@ function Invite() {
             Chá de Casa Nova
           </p>
           <h1
-            className="reveal mt-6 font-serif text-5xl leading-[0.95] text-[color:var(--ivory)] md:text-8xl"
+            className="reveal mt-6 font-serif text-6xl leading-[0.95] text-[color:var(--ivory)] md:text-8xl"
             style={{ animationDelay: "0.25s" }}
           >
             Pedro
@@ -113,10 +119,10 @@ function Invite() {
         </p>
         <img
           src={homeImage}
-          alt="Canto acolhedor da casa nova"
+          alt="Pedro e Clara no nosso cantinho"
           loading="lazy"
-          width={1024}
-          height={1280}
+          width={1086}
+          height={1448}
           className="mt-12 w-full object-cover"
         />
       </Section>
