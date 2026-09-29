@@ -24,12 +24,12 @@ export function GiftsSection({ event }: { event?: EventRow | null }) {
   }, [gifts, category, term]);
 
   const categories = useMemo(
-  () => [
-    "Todos",
-    ...CATEGORIES.filter((c) => c !== "Todos" && gifts.some((g) => g.category === c)),
-  ],
-  [gifts],
-);
+    () => [
+      "Todos",
+      ...CATEGORIES.filter((c) => c !== "Todos" && gifts.some((g) => g.category === c)),
+    ],
+    [gifts],
+  );
 
   return (
     <div>
@@ -70,15 +70,15 @@ export function GiftsSection({ event }: { event?: EventRow | null }) {
                 </p>
               )}
               {(isQuota || Number(gift.price) > 0) && (
-  <div className="mt-5 flex items-baseline justify-between border-t border-border pt-4">
-    <span className="text-sm">{formatBRL(Number(gift.price))}</span>
-    {isQuota && (
-      <span className="text-[0.65rem] tracking-[0.15em] text-muted-foreground uppercase">
-        {gift.total_quotas} cotas de {formatBRL(Number(gift.quota_value))}
-      </span>
-    )}
-  </div>
-)}
+                <div className="mt-5 flex items-baseline justify-between border-t border-border pt-4">
+                  <span className="text-sm">{formatBRL(Number(gift.price))}</span>
+                  {isQuota && (
+                    <span className="text-[0.65rem] tracking-[0.15em] text-muted-foreground uppercase">
+                      {gift.total_quotas} cotas de {formatBRL(Number(gift.quota_value))}
+                    </span>
+                  )}
+                </div>
+              )}
               {isQuota && (
                 <div className="mt-4">
                   <div className="h-px w-full bg-border">

@@ -102,10 +102,10 @@ export function GiftDialog({ gift, hostWhatsapp, onClose, onReserved }: Props) {
               <DialogTitle className="font-serif text-2xl font-light">{gift.name}</DialogTitle>
             </DialogHeader>
             {(isQuota || amount > 0) && (
-  <p className="text-sm text-muted-foreground">
-    {isQuota ? `Contribuição de ${formatBRL(amount)}` : formatBRL(amount)}
-  </p>
-)}
+              <p className="text-sm text-muted-foreground">
+                {isQuota ? `Contribuição de ${formatBRL(amount)}` : formatBRL(amount)}
+              </p>
+            )}
             <form onSubmit={submit} className="space-y-4 pt-2">
               <div className="space-y-2">
                 <Label htmlFor="gift-name">Nome</Label>
