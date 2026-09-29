@@ -160,7 +160,7 @@ function Invite() {
         <p className="mt-10 text-center font-serif text-base leading-relaxed text-muted-foreground italic">
           Para deixar tudo ainda mais gostoso, pedimos que cada um traga seu kit
           churrasco e a bebida de preferência. A gente cuida do resto — e do carinho
-          de receber vocês em nossa casa nova. Ficaremos muito gratos pela sua presença!
+          de celebrar esse começo com vocês. Ficaremos muito gratos pela sua presença!
         </p>
         <div className="mt-16">
           <p className="eyebrow mb-6 text-center">Contagem regressiva</p>
