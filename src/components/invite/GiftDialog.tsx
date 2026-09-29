@@ -15,21 +15,25 @@ const schema = z.object({
 type Props = {
   gift: GiftRow | null;
   hostWhatsapp?: string | null;
+  pixKey?: string | null;
+  pixName?: string | null;
   onClose: () => void;
   onReserved: () => void;
 };
 
-export function GiftDialog({ gift, hostWhatsapp, onClose, onReserved }: Props) {
+export function GiftDialog({ gift, hostWhatsapp, pixKey, pixName, onClose, onReserved }: Props) {
   const [form, setForm] = useState({ name: "", whatsapp: "" });
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     if (gift) {
       setForm({ name: "", whatsapp: "" });
       setError(null);
       setSuccess(false);
+      setCopied(false);
     }
   }, [gift]);
 
@@ -67,6 +71,15 @@ export function GiftDialog({ gift, hostWhatsapp, onClose, onReserved }: Props) {
     onReserved();
   }
 
+  async function copyPix() {
+    if (!pixKey) return;
+    await navigator.clipboard.writeText(pixKey);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
+  }
+
+  const showPix = (isQuota || amount > 0) && !isPlaceholder(pixKey);
+
   const message = isQuota
     ? `Olá, Pedro! Sou ${form.name} e reservei uma cota de ${formatBRL(amount)} do presente "${gift.name}" no Chá de Casa Nova.`
     : `Olá, Pedro! Sou ${form.name} e vou presentear vocês com "${gift.name}" no Chá de Casa Nova.`;
@@ -81,6 +94,21 @@ export function GiftDialog({ gift, hostWhatsapp, onClose, onReserved }: Props) {
             <p className="mx-auto mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
               Obrigado pelo carinho. Agora é só combinar os detalhes com o Pedro.
             </p>
+            {showPix && (
+              <div className="mt-6 border border-border bg-[color:var(--sand)]/40 p-4 text-left">
+                <p className="text-center text-[0.65rem] tracking-[0.2em] text-muted-foreground uppercase">
+                  Chave Pix{pixName ? ` · ${pixName}` : ""}
+                </p>
+                <p className="mt-2 text-center text-sm break-all">{pixKey}</p>
+                <button
+                  type="button"
+                  onClick={copyPix}
+                  className="mt-3 inline-flex w-full items-center justify-center border border-foreground/20 py-3 text-[0.65rem] tracking-[0.2em] uppercase transition-colors hover:bg-foreground hover:text-background"
+                >
+                  {copied ? "Copiado!" : "Copiar chave Pix"}
+                </button>
+              </div>
+            )}
             {isPlaceholder(hostWhatsapp) ? (
               <p className="mt-6 text-xs text-muted-foreground">
                 WhatsApp de contato ainda não configurado.

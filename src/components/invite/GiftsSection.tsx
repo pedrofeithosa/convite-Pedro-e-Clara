@@ -118,6 +118,8 @@ export function GiftsSection({ event }: { event?: EventRow | null }) {
       <GiftDialog
         gift={selected}
         hostWhatsapp={event?.whatsapp}
+        pixKey={event?.pix_key}
+        pixName={event?.pix_name}
         onClose={() => setSelected(null)}
         onReserved={() => void refetch()}
       />
