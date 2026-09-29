@@ -177,6 +177,9 @@ function Invite() {
           {event?.gifts_text ??
             "Presentear é opcional — o mais importante é a sua presença."}
         </p>
+        <p className="mt-3 text-xs tracking-wide text-muted-foreground/80">
+          Nossa voltagem é 110V — fique de olho na hora de escolher o presente.
+        </p>
         <div className="mt-12">
           <GiftsSection event={event} />
         </div>
