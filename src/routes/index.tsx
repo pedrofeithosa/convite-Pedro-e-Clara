@@ -55,7 +55,7 @@ function Invite() {
     <main className="pb-14 md:pt-14 md:pb-0">
       <Nav />
 
-      <section id="inicio" className="relative flex min-h-[100svh] items-end">
+      <section id="inicio" className="relative flex min-h-[100svh] items-end overflow-x-hidden">
         <img
           src={heroImage}
           alt="Sala iluminada da casa nova"
@@ -72,7 +72,7 @@ function Invite() {
             Chá de Casa Nova
           </p>
           <h1
-            className="reveal mt-6 font-serif text-6xl leading-[0.95] text-[color:var(--ivory)] md:text-8xl"
+            className="reveal mt-6 font-serif text-5xl leading-[0.95] text-[color:var(--ivory)] md:text-8xl"
             style={{ animationDelay: "0.25s" }}
           >
             Pedro
