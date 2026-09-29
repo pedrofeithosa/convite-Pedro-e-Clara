@@ -78,7 +78,7 @@ function Invite() {
             Chá de Casa Nova
           </p>
           <h1
-            className="reveal mt-6 font-serif text-6xl leading-[0.95] text-[color:var(--ivory)] md:text-8xl"
+            className="reveal mt-6 font-serif text-5xl leading-[0.95] text-[color:var(--ivory)] md:text-8xl"
             style={{ animationDelay: "0.25s" }}
           >
             Pedro
